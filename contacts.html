@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Контакти, Доставка та Оплата | Майстерня Вишивки</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">Майстерня Вишивки</a>
+      
+      <nav class="main-nav" id="main-nav">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Головна</a></li>
+          <li><a href="about.html" class="nav-link">Про майстерню</a></li>
+          <li><a href="catalog.html" class="nav-link">Каталог</a></li>
+          <li><a href="faq.html" class="nav-link">FAQ</a></li>
+          <li><a href="contacts.html" class="nav-link active">Контакти</a></li>
+        </ul>
+      </nav>
+
+      <button class="btn btn-primary header-btn js-open-modal" data-product="Загальна консультація">Замовити</button>
+      <button class="burger-menu" id="burger-menu" aria-label="Відкрити меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="contacts-page section-padding">
+      <div class="container">
+        
+        <div class="section-header center fade-up">
+          <span class="subtitle">Зв'язок з нами</span>
+          <h2>Контакти та Умови</h2>
+        </div>
+
+        <!-- Прямі контакти -->
+        <div class="contacts-grid fade-up delay-1">
+          <div class="contact-item">
+            <h3>Телефон</h3>
+            <p><a href="tel:+380000000000">+38 (000) 000-00-00</a></p>
+            <p>Пн-Пт: 10:00 - 19:00</p>
+          </div>
+          <div class="contact-item">
+            <h3>Email</h3>
+            <p><a href="mailto:hello@embroidery.ua">hello@embroidery.ua</a></p>
+            <p>Для ескізів та фото</p>
+          </div>
+          <div class="contact-item">
+            <h3>Месенджери</h3>
+            <p><a href="#">Telegram</a> | <a href="#">Viber</a> | <a href="#">Instagram</a></p>
+          </div>
+        </div>
+
+        <!-- Блоки Доставки та Оплати (за референсом) -->
+        <div class="info-cards-wrapper fade-up delay-2">
+          
+          <!-- Картка Доставки -->
+          <div class="info-card">
+            <div class="info-icon">
+              <!-- Іконка вантажівки -->
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7h12m0 0l3 4.5V17h-2.5M20 7l-3-4.5H5a2 2 0 00-2 2v12h2.5M16 17a2.5 2.5 0 11-5 0m5 0a2.5 2.5 0 10-5 0m-5 0h2.5m-5 0A2.5 2.5 0 113 17a2.5 2.5 0 10-5 0"></path>
+              </svg>
+            </div>
+            <div class="info-content">
+              <h3>Способи доставки</h3>
+              <p><strong>Нова Пошта (по Україні):</strong> Доставка здійснюється у відділення, поштомат або кур'єром за тарифами перевізника. Зазвичай займає 1-2 дні.</p>
+              <p><strong>Міжнародна доставка (Nova закордон):</strong> Можливість, терміни та вартість доставки у вашу країну необхідно індивідуально уточнювати під час оформлення замовлення.</p>
+            </div>
+          </div>
+
+          <!-- Картка Оплати -->
+          <div class="info-card">
+            <div class="info-icon">
+              <!-- Іконка картки -->
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
+              </svg>
+            </div>
+            <div class="info-content">
+              <h3>Варіанти оплати</h3>
+              <p><strong>Офіційний рахунок ФОП (Онлайн-оплата):</strong> Безпечна оплата за реквізитами (стандартна практика для внесення 50% передоплати за індивідуальну роботу).</p>
+              <p><strong>При отриманні (Накладений платіж):</strong> Оплата готівкою або карткою у відділенні Нової Пошти після огляду товару (доступно для залишкового платежу).</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Форма зворотного зв'язку -->
+        <div class="page-form-section fade-up">
+          <div class="section-header center">
+            <h2>Залишити запит</h2>
+            <p>Заповніть форму нижче, і ми зв'яжемося з вами для уточнення деталей доставки або створення ескізу.</p>
+          </div>
+          <form class="order-form inline-form" id="page-contact-form">
+            <div class="form-group">
+              <label for="page-name">Ім'я</label>
+              <input type="text" id="page-name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="page-contact">Телефон або Месенджер</label>
+              <input type="text" id="page-contact" name="contact" required>
+            </div>
+            <div class="form-group">
+              <label for="page-comment">Повідомлення</label>
+              <textarea id="page-comment" name="comment" rows="5"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary submit-btn">Відправити</button>
+            <div class="form-message" id="page-form-message"></div>
+          </form>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <span class="logo">Майстерня Вишивки</span>
+        <p>Сучасне мистецтво ручної вишивки.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Розділи сайту</h4>
+        <ul>
+          <li><a href="index.html">Головна</a></li>
+          <li><a href="about.html">Про майстерню</a></li>
+          <li><a href="catalog.html">Каталог</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contacts.html">Контакти</a></li>
+        </ul>
+      </div>
+      <div class="footer-contacts">
+        <h4>Контакти</h4>
+        <p><a href="tel:+380000000000">+38 (000) 000-00-00</a></p>
+        <p><a href="mailto:hello@embroidery.ua">hello@embroidery.ua</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom container">
+      <p>&copy; 2026 Майстерня Вишивки. Всі права захищені.</p>
+    </div>
+  </footer>
+
+  <!-- Модальне вікно (стандартне) -->
+  <div class="modal-overlay" id="order-modal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="close-modal js-close-modal" aria-label="Закрити">&times;</button>
+      <h2 class="modal-title">Обговорити замовлення</h2>
+      <form class="order-form" id="order-form">
+        <div class="form-group">
+          <label for="user-name">Ім'я</label>
+          <input type="text" id="user-name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="user-contact">Телефон або Месенджер</label>
+          <input type="text" id="user-contact" name="contact" required>
+        </div>
+        <div class="form-group">
+          <label for="work-format">Матеріал виконання</label>
+          <select id="work-format" name="format">
+            <option value="thread">Преміальні нитки муліне</option>
+            <option value="beads">Калібрований чеський бісер</option>
+            <option value="mixed">Змішана художня техніка</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="user-comment">Опис ідеї</label>
+          <textarea id="user-comment" name="comment" rows="4"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary submit-btn">Відправити заявку</button>
+        <div class="form-message" id="form-message"></div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
