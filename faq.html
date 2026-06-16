@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Часті питання (FAQ) | Майстерня Вишивки</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">Майстерня Вишивки</a>
+      
+      <nav class="main-nav" id="main-nav">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Головна</a></li>
+          <li><a href="about.html" class="nav-link">Про майстерню</a></li>
+          <li><a href="catalog.html" class="nav-link">Каталог</a></li>
+          <li><a href="faq.html" class="nav-link active">FAQ</a></li>
+          <li><a href="contacts.html" class="nav-link">Контакти</a></li>
+        </ul>
+      </nav>
+
+      <button class="btn btn-primary header-btn js-open-modal" data-product="Консультація зі сторінки FAQ">Замовити</button>
+      <button class="burger-menu" id="burger-menu" aria-label="Відкрити меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="info-section section-padding">
+      <div class="container" style="max-width: 800px; margin: 0 auto;">
+        
+        <div class="section-header center fade-up">
+          <span class="subtitle">Інформаційна довідка</span>
+          <h2>Відповіді на часті питання</h2>
+          <p>Ми зібрали найпопулярніші запитання від наших клієнтів щодо процесу, матеріалів та доставки.</p>
+        </div>
+
+        <div class="faq-accordion fade-up delay-1">
+          
+          <div class="accordion-item">
+            <button class="accordion-header">Які середні терміни виробництва картини?</button>
+            <div class="accordion-content">
+              <p>Залежно від площі зашивки та обраного матеріалу (нитки або бісер), виготовлення триває від 2 до 6 робочих тижнів. Термінові замовлення обговорюються індивідуально.</p>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <button class="accordion-header">Чи здійснюється вишивка за фото низької якості?</button>
+            <div class="accordion-content">
+              <p>Наш дизайнер проводить попередній аналіз зображення. Якщо деталізація критична, клієнту пропонуються варіанти цифрової реставрації макета перед початком вишивки.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header">Чи оформлюєте ви картини в рами?</button>
+            <div class="accordion-content">
+              <p>Стандартно роботи відправляються без рам (на підрамнику або акуратним рулоном), щоб уникнути пошкоджень скла під час транспортування. Але за попередньою домовленістю ми можемо підібрати та оформити роботу в багетній майстерні.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header">Який графік оплат?</button>
+            <div class="accordion-content">
+              <p>Процес виробництва запускається після внесення 50% передоплати. Залишок суми оплачується після завершення роботи та надання вам детального фото/відео звіту готового виробу перед відправкою.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header">Які матеріали ви використовуєте?</button>
+            <div class="accordion-content">
+              <p>Ми працюємо з преміальними матеріалами: французьке муліне (DMC), чеський калібрований бісер (Preciosa) та натуральні лляні або бавовняні основи високої щільності.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Кнопка зв'язку під FAQ -->
+        <div class="center fade-up delay-2" style="margin-top: 50px;">
+          <p style="margin-bottom: 20px;">Не знайшли відповіді на своє запитання?</p>
+          <button class="btn btn-outline js-open-modal" data-product="Запит з FAQ сторінки">Написати майстру</button>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <!-- Такий самий підвал, як у about.html -->
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <span class="logo">Майстерня Вишивки</span>
+        <p>Сучасне мистецтво ручної вишивки.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Розділи сайту</h4>
+        <ul>
+          <li><a href="index.html">Головна</a></li>
+          <li><a href="about.html">Про майстерню</a></li>
+          <li><a href="catalog.html">Каталог</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-contacts">
+        <h4>Контакти</h4>
+        <p><a href="tel:+380000000000">+38 (000) 000-00-00</a></p>
+        <p><a href="mailto:hello@embroidery.ua">hello@embroidery.ua</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom container">
+      <p>&copy; 2026 Майстерня Вишивки. Всі права захищені.</p>
+    </div>
+  </footer>
+
+  <!-- Модальне вікно (стандартне) -->
+  <div class="modal-overlay" id="order-modal" aria-hidden="true">
+      <!-- ... -->
+      <div class="modal-content">
+        <button class="close-modal js-close-modal" aria-label="Закрити">&times;</button>
+        <h2 class="modal-title">Обговорити замовлення</h2>
+        <!-- форма -->
+      </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
