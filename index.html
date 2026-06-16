@@ -3,34 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
   <meta name="googlebot-image" content="noindex">
-  
-  <title>Майстерня Вишивки | Художня вишивка ручної роботи</title>
+  <title>Skinova | Художня вишивка ручної роботи</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
-  
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <header class="site-header">
     <div class="container header-inner">
-      <a href="#" class="logo">Майстерня Вишивки</a>
+      <a href="index.html" class="logo">skinova.com.ua</a>
       
       <nav class="main-nav" id="main-nav">
         <ul class="nav-list">
-          <li><a href="#hero" class="nav-link">Головна</a></li>
-          <li><a href="#about" class="nav-link">Про компанію</a></li>
-          <li><a href="#catalog" class="nav-link">Каталог</a></li>
-          <li><a href="#contacts" class="nav-link">Контакти</a></li>
+          <li><a href="index.html" class="nav-link active">Головна</a></li>
+          <li><a href="about.html" class="nav-link">Про компанію</a></li>
+          <li><a href="catalog.html" class="nav-link">Каталог</a></li>
+          <li><a href="contacts.html" class="nav-link">Контакти</a></li>
         </ul>
       </nav>
 
       <button class="btn btn-primary header-btn js-open-modal" data-product="Загальна консультація">Замовити</button>
-      
       <button class="burger-menu" id="burger-menu" aria-label="Відкрити меню">
         <span></span><span></span><span></span>
       </button>
@@ -46,11 +42,11 @@
           <p>Створення унікальних картин, портретів та преміального декору ручної роботи під замовлення за індивідуальними ескізами.</p>
           <div class="hero-actions">
             <button class="btn btn-primary js-open-modal" data-product="Обговорення замовлення">Обговорити замовлення</button>
-            <a href="#catalog" class="btn btn-secondary">Переглянути роботи</a>
+            <a href="catalog.html" class="btn btn-secondary">Переглянути роботи</a>
           </div>
         </div>
         <div class="hero-image fade-up delay-1">
-          <img src="https://images.unsplash.com/photo-1584992236310-6edddc08acff?auto=format&fit=crop&w=1000&q=80" alt="Вишивка ручної роботи">
+          <img src="https://github.com/user-attachments/assets/37c36e8c-acb4-4ffb-8a0a-4f63628c6cd7" alt="Ексклюзивна вишивка ручної роботи">
         </div>
       </div>
     </section>
@@ -64,134 +60,40 @@
           <p>У виробничому процесі компанія використовує виключно сертифіковані матеріали: високоміцні бавовняні нитки, калібрований чеський бісер та натуральне лляне полотно.</p>
         </div>
         <div class="about-image fade-up delay-1">
-          <img src="https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?auto=format&fit=crop&w=800&q=80" alt="Текстура матеріалів">
+          <img src="https://github.com/user-attachments/assets/defdacff-2913-4047-805a-08949be883ba" alt="Процес створення вишивки та матеріали">
         </div>
       </div>
     </section>
 
-    <section class="catalog section-padding" id="catalog">
+    <section class="featured section-padding">
       <div class="container">
         <div class="section-header center fade-up">
-          <span class="subtitle">Портфоліо</span>
-          <h2>Каталог реалізованих проектів</h2>
-          <p>Приклади робіт для натхнення.</p>
+          <span class="subtitle">Вибране</span>
+          <h2>Преміальні рішення для інтер'єру</h2>
         </div>
         
         <div class="catalog-grid">
-          
           <article class="product-card fade-up">
             <div class="card-image">
-              <a href="https://ru.pinterest.com/pin/8092474327203645/" target="_blank" rel="nofollow">
-                <img src="https://images.unsplash.com/photo-1597481499750-3e6b22637e12?auto=format&fit=crop&w=600&q=80" alt="Робота 1">
-              </a>
+              <img src="https://github.com/user-attachments/assets/31b26622-04a3-488d-bc64-c5b258e13b57" alt="Портрет бісером">
             </div>
             <div class="card-content">
-              <h3 class="card-title">Авторська вишивка</h3>
-              <p class="card-technique">Техніка: Ручна зашивка</p>
-              <button class="btn btn-outline js-open-modal" data-product="Робота 1">Замовити схожу</button>
+              <h3 class="card-title">Авторська робота</h3>
+              <p class="card-technique">Техніка: Повна зашивка</p>
+              <a href="catalog.html" class="btn btn-outline">Перейти до каталогу</a>
             </div>
           </article>
 
           <article class="product-card fade-up delay-1">
             <div class="card-image">
-              <a href="https://ru.pinterest.com/pin/7529524373698882/" target="_blank" rel="nofollow">
-                <img src="https://images.unsplash.com/photo-1528698827591-e19ccd7bc23d?auto=format&fit=crop&w=600&q=80" alt="Робота 2">
-              </a>
+              <img src="https://github.com/user-attachments/assets/cf25e473-4a35-45c1-abee-43ea44aa1b66" alt="Пейзаж нитками">
             </div>
             <div class="card-content">
-              <h3 class="card-title">Деталізована робота</h3>
+              <h3 class="card-title">Деталізована вишивка</h3>
               <p class="card-technique">Техніка: Рахунковий хрестик</p>
-              <button class="btn btn-outline js-open-modal" data-product="Робота 2">Замовити схожу</button>
+              <a href="catalog.html" class="btn btn-outline">Перейти до каталогу</a>
             </div>
           </article>
-
-          <article class="product-card fade-up delay-2">
-            <div class="card-image">
-              <a href="https://ru.pinterest.com/pin/392235448766898443/" target="_blank" rel="nofollow">
-                <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=600&q=80" alt="Робота 3">
-              </a>
-            </div>
-            <div class="card-content">
-              <h3 class="card-title">Ботанічний мотив</h3>
-              <p class="card-technique">Техніка: Художня гладь</p>
-              <button class="btn btn-outline js-open-modal" data-product="Робота 3">Замовити схожу</button>
-            </div>
-          </article>
-
-          <article class="product-card fade-up">
-            <div class="card-image">
-              <a href="https://ru.pinterest.com/pin/441352832245641127/" target="_blank" rel="nofollow">
-                <img src="https://images.unsplash.com/photo-1584992236310-6edddc08acff?auto=format&fit=crop&w=600&q=80" alt="Робота 4">
-              </a>
-            </div>
-            <div class="card-content">
-              <h3 class="card-title">Інтер'єрна вишивка</h3>
-              <p class="card-technique">Техніка: Змішана техніка</p>
-              <button class="btn btn-outline js-open-modal" data-product="Робота 4">Замовити схожу</button>
-            </div>
-          </article>
-          
-          <article class="product-card fade-up delay-1">
-            <div class="card-image">
-              <a href="https://ru.pinterest.com/pin/2111131072923343/" target="_blank" rel="nofollow">
-                <img src="https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?auto=format&fit=crop&w=600&q=80" alt="Робота 5">
-              </a>
-            </div>
-            <div class="card-content">
-              <h3 class="card-title">Абстрактний сюжет</h3>
-              <p class="card-technique">Техніка: Преміальний бісер</p>
-              <button class="btn btn-outline js-open-modal" data-product="Робота 5">Замовити схожу</button>
-            </div>
-          </article>
-
-          <article class="product-card fade-up delay-2">
-            <div class="card-image">
-              <a href="https://ru.pinterest.com/pin/211174979319182/" target="_blank" rel="nofollow">
-                <img src="https://images.unsplash.com/photo-1597481499750-3e6b22637e12?auto=format&fit=crop&w=600&q=80" alt="Робота 6">
-              </a>
-            </div>
-            <div class="card-content">
-              <h3 class="card-title">Класичний портрет</h3>
-              <p class="card-technique">Техніка: Французьке муліне</p>
-              <button class="btn btn-outline js-open-modal" data-product="Робота 6">Замовити схожу</button>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <section class="info-section section-padding" id="contacts">
-      <div class="container info-container">
-        <div class="delivery-info fade-up">
-          <span class="subtitle">Умови співпраці</span>
-          <h2>Доставка та оплата</h2>
-          <div class="info-block">
-            <h3>Узгоджені канали доставки:</h3>
-            <ul>
-              <li>Нова Пошта та Укрпошта по всій території України.</li>
-              <li>Міжнародне транспортування замовлень.</li>
-            </ul>
-          </div>
-          <div class="info-block">
-            <h3>Фінансові умови:</h3>
-            <ul>
-              <li>Безготівковий розрахунок на офіційний рахунок ФОП.</li>
-              <li>Виробництво запускається після внесення 50% передоплати.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="faq-accordion fade-up delay-1">
-          <span class="subtitle">Інформаційна довідка</span>
-          <h2>Часті питання</h2>
-          
-          <div class="accordion-item">
-            <button class="accordion-header">Які середні терміни виробництва?</button>
-            <div class="accordion-content">
-              <p>Залежно від площі зашивки та обраного матеріалу, виготовлення триває від 2 до 6 робочих тижнів.</p>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -200,17 +102,17 @@
   <footer class="site-footer">
     <div class="container footer-container">
       <div class="footer-brand">
-        <span class="logo">Майстерня Вишивки</span>
+        <span class="logo">skinova.com.ua</span>
         <p>Сучасне мистецтво ручної вишивки.</p>
       </div>
       <div class="footer-contacts">
         <h4>Контакти</h4>
         <p><a href="tel:+380000000000">+38 (000) 000-00-00</a></p>
-        <p><a href="mailto:hello@embroidery.ua">hello@embroidery.ua</a></p>
+        <p><a href="mailto:info@skinova.com.ua">info@skinova.com.ua</a></p>
       </div>
     </div>
     <div class="footer-bottom container">
-      <p>&copy; 2026 Майстерня Вишивки. Всі права захищені.</p>
+      <p>&copy; 2026 skinova.com.ua. Всі права захищені.</p>
     </div>
   </footer>
 
