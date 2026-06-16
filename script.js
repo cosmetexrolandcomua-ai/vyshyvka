@@ -132,6 +132,17 @@ document.addEventListener("DOMContentLoaded", () => {
         submitBtn.disabled = false;
       }
     });
+    // ================= Галерея на сторінці товару =================
+  window.changeImage = function(element) {
+    const mainImg = document.getElementById('main-product-img');
+    if(mainImg) {
+      mainImg.src = element.src; // Змінюємо головне фото
+      
+      // Змінюємо активний клас на мініатюрах
+      document.querySelectorAll('.thumbnail').forEach(thumb => thumb.classList.remove('active'));
+      element.classList.add('active');
+    }
+  };
     // ================= Калькулятор ціни =================
   window.calculatePrice = function() {
     const sizeSelect = document.getElementById('calc-size');
