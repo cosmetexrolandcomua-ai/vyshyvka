@@ -382,41 +382,24 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   margin-bottom: 30px;
 }
 
-/* Форма параметрів */
-.product-options-form {
-  background: var(--white);
-  padding: 30px;
-  border-radius: 8px;
-  border: 1px solid rgba(44, 39, 36, 0.08);
-}
+// ================= Калькулятор ціни =================
+  window.calculatePrice = function() {
+    const sizeSelect = document.getElementById('calc-size');
+    const techniqueSelect = document.getElementById('calc-technique');
+    const priceDisplay = document.getElementById('dynamic-price');
 
-.option-group {
-  margin-bottom: 20px;
-}
+    if(sizeSelect && techniqueSelect && priceDisplay) {
+      // Отримуємо значення з селектів
+      const basePrice = parseFloat(sizeSelect.value); // Ціна за розмір
+      const multiplier = parseFloat(techniqueSelect.value); // Коефіцієнт техніки
+      
+      // Рахуємо фінальну ціну
+      const finalPrice = Math.round(basePrice * multiplier);
+      
+      // Виводимо ціну з пробілом тисяч (напр. 1 500)
+      priceDisplay.textContent = finalPrice.toLocaleString('uk-UA');
+    }
+  };
 
-.option-group label {
-  display: block;
-  font-size: 0.9rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 8px;
-  color: var(--text-color);
-}
-
-.option-group select {
-  width: 100%;
-  padding: 12px 15px;
-  border: 1px solid rgba(44, 39, 36, 0.2);
-  border-radius: 4px;
-  font-family: var(--font-sans);
-  font-size: 1rem;
-  color: var(--text-color);
-  background-color: var(--bg-color);
-  cursor: pointer;
-}
-
-.option-group select:focus {
-  outline: none;
-  border-color: var(--accent-color);
-}
+  // Викликаємо функцію один раз при завантаженні сторінки, щоб ціна відобразилась коректно одразу
+  calculatePrice();
