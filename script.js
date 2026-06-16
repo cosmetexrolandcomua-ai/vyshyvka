@@ -132,5 +132,26 @@ document.addEventListener("DOMContentLoaded", () => {
         submitBtn.disabled = false;
       }
     });
+    // ================= Калькулятор ціни =================
+  window.calculatePrice = function() {
+    const sizeSelect = document.getElementById('calc-size');
+    const techniqueSelect = document.getElementById('calc-technique');
+    const priceDisplay = document.getElementById('dynamic-price');
+
+    if(sizeSelect && techniqueSelect && priceDisplay) {
+      // Отримуємо значення з селектів
+      const basePrice = parseFloat(sizeSelect.value); // Ціна за розмір
+      const multiplier = parseFloat(techniqueSelect.value); // Коефіцієнт техніки
+      
+      // Рахуємо фінальну ціну
+      const finalPrice = Math.round(basePrice * multiplier);
+      
+      // Виводимо ціну з пробілом тисяч (напр. 1 500)
+      priceDisplay.textContent = finalPrice.toLocaleString('uk-UA');
+    }
+  };
+
+  // Викликаємо функцію один раз при завантаженні сторінки, щоб ціна відобразилась коректно одразу
+  calculatePrice();
   }
 });
