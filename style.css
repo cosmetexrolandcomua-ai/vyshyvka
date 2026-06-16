@@ -274,3 +274,15 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     padding: 24px;
   }
 }
+/* Ціна у картках каталогу */
+.card-price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  margin-top: -10px;
+  margin-bottom: 20px;
+}
+
+.card-technique {
+  margin-bottom: 5px !important;
+}
