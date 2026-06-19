@@ -381,4 +381,27 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   font-size: 1.05rem;
   margin-bottom: 30px;
 }
+/* Посилання "Детальніше" у картках */
+.details-link {
+  display: inline-block;
+  margin-bottom: 15px;
+  color: var(--accent-color);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: var(--transition);
+}
 
+.details-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Hover-ефект для заголовку картки */
+.card-title {
+  transition: color 0.3s ease;
+}
+
+.product-card:hover .card-title {
+  color: var(--accent-color);
+}
