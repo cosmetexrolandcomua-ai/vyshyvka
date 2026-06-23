@@ -26,7 +26,7 @@
         </ul>
       </nav>
 
-      <button class="btn btn-primary header-btn js-open-modal" data-product="Консультація зі сторінки FAQ">Замовити</button>
+      <button class="btn btn-primary header-btn js-open-modal" data-product="Консультація">Замовити</button>
       <button class="burger-menu" id="burger-menu" aria-label="Відкрити меню">
         <span></span><span></span><span></span>
       </button>
@@ -40,7 +40,7 @@
         <div class="section-header center fade-up">
           <span class="subtitle">Інформаційна довідка</span>
           <h2>Відповіді на часті питання</h2>
-          <p>Ми зібрали найпопулярніші запитання від наших клієнтів щодо процесу, матеріалів та доставки.</p>
+          <p>Тут зібрані найпопулярніші запитання від клієнтів щодо процесу, матеріалів та доставки.</p>
         </div>
 
         <div class="faq-accordion fade-up delay-1">
@@ -55,14 +55,14 @@
           <div class="accordion-item">
             <button class="accordion-header">Чи здійснюється вишивка за фото низької якості?</button>
             <div class="accordion-content">
-              <p>Наш дизайнер проводить попередній аналіз зображення. Якщо деталізація критична, клієнту пропонуються варіанти цифрової реставрації макета перед початком вишивки.</p>
+              <p>Майстриня проводить попередній аналіз зображення. Якщо деталізація критична, пропонуються варіанти цифрової реставрації макета перед початком вишивки.</p>
             </div>
           </div>
 
           <div class="accordion-item">
             <button class="accordion-header">Чи оформлюєте ви картини в рами?</button>
             <div class="accordion-content">
-              <p>Стандартно роботи відправляються без рам (на підрамнику або акуратним рулоном), щоб уникнути пошкоджень скла під час транспортування. Але за попередньою домовленістю ми можемо підібрати та оформити роботу в багетній майстерні.</p>
+              <p>Стандартно роботи відправляються без рам (на підрамнику або акуратним рулоном), щоб уникнути пошкоджень скла під час транспортування. Але за попередньою домовленістю можливий підбір та оформлення роботи в багетній майстерні.</p>
             </div>
           </div>
 
@@ -74,15 +74,14 @@
           </div>
 
           <div class="accordion-item">
-            <button class="accordion-header">Які матеріали ви використовуєте?</button>
+            <button class="accordion-header">Які матеріали використовуються?</button>
             <div class="accordion-content">
-              <p>Ми працюємо з преміальними матеріалами: французьке муліне (DMC), чеський калібрований бісер (Preciosa) та натуральні лляні або бавовняні основи високої щільності.</p>
+              <p>У роботі використовуються виключно преміальні матеріали: французьке муліне (DMC), чеський калібрований бісер (Preciosa) та натуральні лляні або бавовняні основи високої щільності.</p>
             </div>
           </div>
 
         </div>
 
-        <!-- Кнопка зв'язку під FAQ -->
         <div class="center fade-up delay-2" style="margin-top: 50px;">
           <p style="margin-bottom: 20px;">Не знайшли відповіді на своє запитання?</p>
           <button class="btn btn-outline js-open-modal" data-product="Запит з FAQ сторінки">Написати майстру</button>
@@ -92,7 +91,7 @@
     </section>
   </main>
 
- <footer class="site-footer">
+  <footer class="site-footer">
     <div class="container footer-container">
       <div class="footer-brand">
         <span class="logo">Майстерня Вишивки</span>
@@ -105,6 +104,7 @@
           <li><a href="about.html">Про майстерню</a></li>
           <li><a href="catalog.html">Каталог</a></li>
           <li><a href="faq.html">FAQ</a></li>
+          <li><a href="delivery.html">Доставка та оплата</a></li>
         </ul>
       </div>
       <div class="footer-contacts">
@@ -113,25 +113,16 @@
         <p><a href="mailto:hello@embroidery.ua">hello@embroidery.ua</a></p>
       </div>
     </div>
-   <div class="footer-bottom container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+    <div class="footer-bottom container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
       <p>&copy; 2026 Майстерня Вишивки. Всі права захищені.</p>
       <a href="privacy.html" style="font-size: 0.85rem; text-decoration: underline;">Політика конфіденційності</a>
     </div>
   </footer>
 
-  <!-- Модальне вікно (стандартне) -->
   <div class="modal-overlay" id="order-modal" aria-hidden="true">
-      <!-- ... -->
-      <div class="modal-content">
-        <button class="close-modal js-close-modal" aria-label="Закрити">&times;</button>
-        <h2 class="modal-title">Обговорити замовлення</h2>
-        <!-- форма -->
-      </div>
-  </div>
-<div class="modal-overlay" id="order-modal" aria-hidden="true">
     <div class="modal-content">
       <button class="close-modal js-close-modal" aria-label="Закрити">&times;</button>
-      <h2 class="modal-title">Обговорити замовлення</h2>
+      <h2 class="modal-title">Обговорити деталі</h2>
       <form class="order-form" id="order-form">
         <div class="form-group">
           <label for="user-name">Ім'я</label>
@@ -142,7 +133,7 @@
           <input type="text" id="user-contact" name="contact" required>
         </div>
         <div class="form-group">
-          <label for="user-comment">Деталі вашого замовлення</label>
+          <label for="user-comment">Ваше повідомлення / запитання</label>
           <textarea id="user-comment" name="comment" rows="5"></textarea>
         </div>
         <button type="submit" class="btn btn-primary submit-btn">Відправити майстрині</button>
@@ -150,6 +141,7 @@
       </form>
     </div>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
