@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        observer.unobserve(entry.target); // Анімація програється лише один раз
+        observer.unobserve(entry.target);
       }
     });
   }, observerOptions);
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 3. Акордеон (FAQ)
+  // 3. Акордеон (FAQ та Характеристики)
   const accordionItems = document.querySelectorAll('.accordion-item');
   accordionItems.forEach(item => {
     const header = item.querySelector('.accordion-header');
@@ -59,24 +59,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const openModalBtns = document.querySelectorAll('.js-open-modal');
   const closeModalBtn = document.querySelector('.js-close-modal');
   const userCommentInput = document.getElementById('user-comment');
-  const orderForm = document.getElementById('order-form');
-  const formMessage = document.getElementById('form-message');
 
   const openModal = (productContext) => {
-    modalOverlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    if (productContext && userCommentInput) {
-      userCommentInput.value = `Мене зацікавив виріб: "${productContext}". \nБажаю обговорити деталі реалізації схожого проекту.`;
+    if (modalOverlay) {
+      modalOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      // Підставляємо назву виробу, якщо це клік з каталогу
+      if (productContext && userCommentInput) {
+        userCommentInput.value = `Мене зацікавив виріб: "${productContext}". \nБажаю обговорити деталі.`;
+      }
     }
   };
 
   const closeModal = () => {
-    modalOverlay.classList.remove('active');
-    document.body.style.overflow = '';
-    if (orderForm) orderForm.reset();
-    if (formMessage) {
-      formMessage.textContent = '';
-      formMessage.className = 'form-message';
+    if (modalOverlay) {
+      modalOverlay.classList.remove('active');
+      document.body.style.overflow = '';
     }
   };
 
@@ -87,18 +85,19 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
-  modalOverlay.addEventListener('click', (e) => {
-    if (e.target === modalOverlay) closeModal();
-  });
+  if (modalOverlay) {
+    modalOverlay.addEventListener('click', (e) => {
+      if (e.target === modalOverlay) closeModal();
+    });
+  }
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modalOverlay.classList.contains('active')) closeModal();
+    if (e.key === 'Escape' && modalOverlay && modalOverlay.classList.contains('active')) closeModal();
   });
 
- // 5. Відправка форми у Telegram-бот
+  // 5. Відправка форми у Telegram-бот
   const TELEGRAM_TOKEN = '8833646323:AAGfXYN1cyAiPyrNfjtu9b_MSlWJKFnO0C8';
   const CHAT_ID = '8522043344';
 
-  // Функція для відправки даних
   const sendToTelegram = async (form, messageElement, isContactForm = false) => {
     const submitBtn = form.querySelector('.submit-btn');
     const originalBtnText = submitBtn.textContent;
@@ -109,12 +108,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
 
-    // Формуємо гарне повідомлення для Telegram
+    // Формуємо повідомлення
     let text = `🌟 <b>Нова заявка з сайту!</b>\n\n`;
     text += `👤 <b>Ім'я:</b> ${data.name || 'Не вказано'}\n`;
     text += `📞 <b>Контакт:</b> ${data.contact || 'Не вказано'}\n`;
     
-    // Перевіряємо, чи є ці поля у формі (бо на сторінці контактів їх немає)
     if (data.format) text += `🧵 <b>Матеріал:</b> ${data.format}\n`;
     if (data.size) text += `📏 <b>Розмір:</b> ${data.size}\n`;
     if (data.comment) text += `📝 <b>Повідомлення/Коментар:</b>\n${data.comment}\n`;
@@ -122,13 +120,11 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           chat_id: CHAT_ID,
           text: text,
-          parse_mode: 'HTML' // Дозволяє використовувати жирний шрифт
+          parse_mode: 'HTML'
         })
       });
 
@@ -139,17 +135,18 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         form.reset();
         
-        // Закриваємо модальне вікно через 3 секунди після успішної відправки
+        // Закриваємо модалку після відправки
         if (!isContactForm) {
           setTimeout(() => {
-            const modal = document.getElementById('order-modal');
-            if (modal) modal.classList.remove('active');
-            document.body.style.overflow = '';
-            if (messageElement) messageElement.textContent = ''; // Очищаємо повідомлення для наступного разу
+            closeModal();
+            if (messageElement) {
+              messageElement.textContent = '';
+              messageElement.className = 'form-message';
+            }
           }, 3000);
         }
       } else {
-        throw new Error('Telegram API error');
+        throw new Error('Помилка API Telegram');
       }
     } catch (err) {
       console.error(err);
@@ -158,13 +155,12 @@ document.addEventListener("DOMContentLoaded", () => {
         messageElement.className = 'form-message error';
       }
     } finally {
-      // Повертаємо кнопці початковий вигляд
       submitBtn.textContent = originalBtnText;
       submitBtn.disabled = false;
     }
   };
 
-  // Підключаємо обробник для головної форми (у модальному вікні)
+  // Обробник форми у модальному вікні
   const orderForm = document.getElementById('order-form');
   const formMessage = document.getElementById('form-message');
   if (orderForm) {
@@ -174,7 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Підключаємо обробник для форми на сторінці контактів / доставки
+  // Обробник форми на сторінці контактів (якщо вона є)
   const pageContactForm = document.getElementById('page-contact-form');
   const pageFormMessage = document.getElementById('page-form-message');
   if (pageContactForm) {
@@ -183,37 +179,54 @@ document.addEventListener("DOMContentLoaded", () => {
       sendToTelegram(pageContactForm, pageFormMessage, true);
     });
   }
-    // ================= Галерея на сторінці товару =================
+
+  // ================= Галерея на сторінці товару (product.html) =================
   window.changeImage = function(element) {
     const mainImg = document.getElementById('main-product-img');
     if(mainImg) {
-      mainImg.src = element.src; // Змінюємо головне фото
-      
-      // Змінюємо активний клас на мініатюрах
+      mainImg.src = element.src; 
       document.querySelectorAll('.thumbnail').forEach(thumb => thumb.classList.remove('active'));
       element.classList.add('active');
     }
   };
-    // ================= Калькулятор ціни =================
+
+  // ================= Калькулятор ціни (product.html) =================
   window.calculatePrice = function() {
     const sizeSelect = document.getElementById('calc-size');
     const techniqueSelect = document.getElementById('calc-technique');
     const priceDisplay = document.getElementById('dynamic-price');
 
     if(sizeSelect && techniqueSelect && priceDisplay) {
-      // Отримуємо значення з селектів
-      const basePrice = parseFloat(sizeSelect.value); // Ціна за розмір
-      const multiplier = parseFloat(techniqueSelect.value); // Коефіцієнт техніки
+      const basePrice = parseFloat(sizeSelect.value); 
+      const multiplier = parseFloat(techniqueSelect.value); 
       
-      // Рахуємо фінальну ціну
       const finalPrice = Math.round(basePrice * multiplier);
-      
-      // Виводимо ціну з пробілом тисяч (напр. 1 500)
       priceDisplay.textContent = finalPrice.toLocaleString('uk-UA');
     }
   };
 
-  // Викликаємо функцію один раз при завантаженні сторінки, щоб ціна відобразилась коректно одразу
+  // Ініціалізація калькулятора при завантаженні
   calculatePrice();
+
+  // ================= Підстановка даних з калькулятора у форму (product.html) =================
+  const customModalBtn = document.querySelector('.js-open-modal-custom');
+  if(customModalBtn) {
+    customModalBtn.addEventListener('click', () => {
+      const title = document.querySelector('.product-title') ? document.querySelector('.product-title').textContent : 'Виріб';
+      const sizeSelect = document.getElementById('calc-size');
+      const techSelect = document.getElementById('calc-technique');
+      const matSelect = document.getElementById('calc-material');
+      const price = document.getElementById('dynamic-price') ? document.getElementById('dynamic-price').textContent : '';
+
+      if (sizeSelect && techSelect && matSelect && userCommentInput) {
+        const sizeText = sizeSelect.options[sizeSelect.selectedIndex].getAttribute('data-label');
+        const techText = techSelect.options[techSelect.selectedIndex].getAttribute('data-label');
+        const matText = matSelect.options[matSelect.selectedIndex].value;
+
+        userCommentInput.value = `Мене зацікавив виріб: ${title}\nОбраний розмір: ${sizeText}\nТехніка: ${techText}\nМатеріал: ${matText}\nОрієнтовна вартість: ${price} грн.\n\nМої додаткові побажання: `;
+      }
+      openModal();
+    });
   }
+
 });
