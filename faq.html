@@ -45,7 +45,7 @@
 
         <div class="faq-accordion fade-up delay-1">
           
-          <div class="accordion-item">
+          <div class="accordion-item active">
             <button class="accordion-header">Які середні терміни виробництва картини?</button>
             <div class="accordion-content">
               <p>Залежно від площі зашивки та обраного матеріалу (нитки або бісер), виготовлення триває від 2 до 6 робочих тижнів. Термінові замовлення обговорюються індивідуально.</p>
@@ -60,7 +60,7 @@
           </div>
 
           <div class="accordion-item">
-            <button class="accordion-header">Чи оформлюєте ви картини в рами?</button>
+            <button class="accordion-header">Чи оформлюються готові картини в рами?</button>
             <div class="accordion-content">
               <p>Стандартно роботи відправляються без рам (на підрамнику або акуратним рулоном), щоб уникнути пошкоджень скла під час транспортування. Але за попередньою домовленістю можливий підбір та оформлення роботи в багетній майстерні.</p>
             </div>
@@ -82,9 +82,27 @@
 
         </div>
 
-        <div class="center fade-up delay-2" style="margin-top: 50px;">
-          <p style="margin-bottom: 20px;">Не знайшли відповіді на своє запитання?</p>
-          <button class="btn btn-outline js-open-modal" data-product="Запит з FAQ сторінки">Написати майстру</button>
+        <div class="page-form-section fade-up" style="margin-top: 80px;">
+          <div class="section-header center">
+            <h2>Залишилися питання?</h2>
+            <p>Напишіть повідомлення, і майстриня зв'яжеться з вами для детальної консультації.</p>
+          </div>
+          <form class="inline-form" id="faq-contact-form">
+            <div class="form-group">
+              <label for="faq-name">Ім'я</label>
+              <input type="text" id="faq-name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="faq-contact">Телефон або Месенджер</label>
+              <input type="text" id="faq-contact" name="contact" required>
+            </div>
+            <div class="form-group">
+              <label for="faq-comment">Ваше питання</label>
+              <textarea id="faq-comment" name="comment" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary submit-btn" style="width: 100%;">Надіслати питання</button>
+            <div class="form-message" id="faq-form-message"></div>
+          </form>
         </div>
 
       </div>
@@ -122,20 +140,44 @@
   <div class="modal-overlay" id="order-modal" aria-hidden="true">
     <div class="modal-content">
       <button class="close-modal js-close-modal" aria-label="Закрити">&times;</button>
-      <h2 class="modal-title">Обговорити деталі</h2>
+      <h2 class="modal-title">Обговорити замовлення</h2>
       <form class="order-form" id="order-form">
+        
         <div class="form-group">
           <label for="user-name">Ім'я</label>
           <input type="text" id="user-name" name="name" required>
         </div>
+        
         <div class="form-group">
           <label for="user-contact">Телефон або Месенджер</label>
           <input type="text" id="user-contact" name="contact" required>
         </div>
+        
         <div class="form-group">
-          <label for="user-comment">Ваше повідомлення / запитання</label>
-          <textarea id="user-comment" name="comment" rows="5"></textarea>
+          <label for="work-format">Матеріал виконання</label>
+          <select id="work-format" name="format">
+            <option value="thread">Преміальні нитки муліне</option>
+            <option value="beads">Калібрований чеський бісер</option>
+            <option value="mixed">Змішана техніка</option>
+          </select>
         </div>
+
+        <div class="form-group">
+          <label for="work-size">Бажаний розмір полотна</label>
+          <select id="work-size" name="size">
+            <option value="13x18">13 × 18 см</option>
+            <option value="15x21">15 × 21 см</option>
+            <option value="20x30">20 × 30 см</option>
+            <option value="30x40">30 × 40 см</option>
+            <option value="custom">Інший розмір (обговорюється)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="user-comment">Деталі вашого замовлення</label>
+          <textarea id="user-comment" name="comment" rows="4"></textarea>
+        </div>
+        
         <button type="submit" class="btn btn-primary submit-btn">Відправити майстрині</button>
         <div class="form-message" id="form-message"></div>
       </form>
