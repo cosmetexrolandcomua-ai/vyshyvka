@@ -188,7 +188,28 @@
       </form>
     </div>
   </div>
-
+<div class="modal-overlay" id="order-modal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="close-modal js-close-modal" aria-label="Закрити">&times;</button>
+      <h2 class="modal-title">Обговорити замовлення</h2>
+      <form class="order-form" id="order-form">
+        <div class="form-group">
+          <label for="user-name">Ім'я</label>
+          <input type="text" id="user-name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="user-contact">Телефон або Месенджер</label>
+          <input type="text" id="user-contact" name="contact" required>
+        </div>
+        <div class="form-group">
+          <label for="user-comment">Деталі вашого замовлення</label>
+          <textarea id="user-comment" name="comment" rows="5"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary submit-btn">Відправити майстрині</button>
+        <div class="form-message" id="form-message"></div>
+      </form>
+    </div>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>
