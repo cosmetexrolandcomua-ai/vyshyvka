@@ -26,6 +26,7 @@
         </ul>
       </nav>
 
+      <!-- Кнопка "Замовити", що відкриває модальне вікно -->
       <button class="btn btn-primary header-btn js-open-modal" data-product="Консультація">Замовити</button>
       <button class="burger-menu" id="burger-menu" aria-label="Відкрити меню">
         <span></span><span></span><span></span>
@@ -82,27 +83,10 @@
 
         </div>
 
-        <div class="page-form-section fade-up" style="margin-top: 80px;">
-          <div class="section-header center">
-            <h2>Залишилися питання?</h2>
-            <p>Напишіть повідомлення, і майстриня зв'яжеться з вами для детальної консультації.</p>
-          </div>
-          <form class="inline-form" id="faq-contact-form">
-            <div class="form-group">
-              <label for="faq-name">Ім'я</label>
-              <input type="text" id="faq-name" name="name" required>
-            </div>
-            <div class="form-group">
-              <label for="faq-contact">Телефон або Месенджер</label>
-              <input type="text" id="faq-contact" name="contact" required>
-            </div>
-            <div class="form-group">
-              <label for="faq-comment">Ваше питання</label>
-              <textarea id="faq-comment" name="comment" rows="4" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary submit-btn" style="width: 100%;">Надіслати питання</button>
-            <div class="form-message" id="faq-form-message"></div>
-          </form>
+        <!-- Кнопка "Написати майстру", яка викликає модальне вікно -->
+        <div class="center fade-up delay-2" style="margin-top: 60px;">
+          <p style="margin-bottom: 20px; font-size: 1.1rem; color: var(--text-color);">Не знайшли відповіді на своє запитання?</p>
+          <button class="btn btn-outline js-open-modal" data-product="Запит з FAQ сторінки (не знайшли відповідь)">Написати майстру</button>
         </div>
 
       </div>
@@ -137,6 +121,7 @@
     </div>
   </footer>
 
+  <!-- Спільне модальне вікно для всіх кнопок -->
   <div class="modal-overlay" id="order-modal" aria-hidden="true">
     <div class="modal-content">
       <button class="close-modal js-close-modal" aria-label="Закрити">&times;</button>
@@ -174,11 +159,11 @@
         </div>
 
         <div class="form-group">
-          <label for="user-comment">Деталі вашого замовлення</label>
+          <label for="user-comment">Опис ідеї</label>
           <textarea id="user-comment" name="comment" rows="4"></textarea>
         </div>
         
-        <button type="submit" class="btn btn-primary submit-btn">Відправити майстрині</button>
+        <button type="submit" class="btn btn-primary submit-btn" style="width: 100%;">Відправити заявку</button>
         <div class="form-message" id="form-message"></div>
       </form>
     </div>
