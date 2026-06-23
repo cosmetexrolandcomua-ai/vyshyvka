@@ -94,44 +94,95 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.key === 'Escape' && modalOverlay.classList.contains('active')) closeModal();
   });
 
-  // 5. Відправка форми (та підготовка експорту даних у форматі CSV за потреби бекенду)
-  if (orderForm) {
-    orderForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      const submitBtn = orderForm.querySelector('.submit-btn');
-      submitBtn.textContent = 'Обробка запиту...';
-      submitBtn.disabled = true;
+ // 5. Відправка форми у Telegram-бот
+  const TELEGRAM_TOKEN = '8833646323:AAGfXYN1cyAiPyrNfjtu9b_MSlWJKFnO0C8';
+  const CHAT_ID = '8522043344';
 
-      // Підготовка даних форми
-      const formData = new FormData(orderForm);
-      const data = Object.fromEntries(formData.entries());
+  // Функція для відправки даних
+  const sendToTelegram = async (form, messageElement, isContactForm = false) => {
+    const submitBtn = form.querySelector('.submit-btn');
+    const originalBtnText = submitBtn.textContent;
+    submitBtn.textContent = 'Відправка...';
+    submitBtn.disabled = true;
 
-      try {
-        // Симуляція мережевої затримки
-        await new Promise(resolve => setTimeout(resolve, 1200));
+    // Отримуємо дані з форми
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
 
-        // Функція підготовки даних замовлень для збереження у форматі CSV (інтеграція)
-        const csvString = `${data.name},${data.contact},${data.format},"${data.comment.replace(/\n/g, ' ')}"`;
-        console.log("Дані замовлення готові для імпорту в CSV-форматі:", csvString);
+    // Формуємо гарне повідомлення для Telegram
+    let text = `🌟 <b>Нова заявка з сайту!</b>\n\n`;
+    text += `👤 <b>Ім'я:</b> ${data.name || 'Не вказано'}\n`;
+    text += `📞 <b>Контакт:</b> ${data.contact || 'Не вказано'}\n`;
+    
+    // Перевіряємо, чи є ці поля у формі (бо на сторінці контактів їх немає)
+    if (data.format) text += `🧵 <b>Матеріал:</b> ${data.format}\n`;
+    if (data.size) text += `📏 <b>Розмір:</b> ${data.size}\n`;
+    if (data.comment) text += `📝 <b>Повідомлення/Коментар:</b>\n${data.comment}\n`;
 
-        if (formMessage) {
-          formMessage.textContent = 'Дякуємо! Ваша заявка прийнята. Представник компанії зв\'яжеться з вами найближчим часом.';
-          formMessage.className = 'form-message success';
+    try {
+      const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          chat_id: CHAT_ID,
+          text: text,
+          parse_mode: 'HTML' // Дозволяє використовувати жирний шрифт
+        })
+      });
+
+      if (response.ok) {
+        if (messageElement) {
+          messageElement.textContent = 'Дякуємо! Ваша заявка успішно відправлена. Майстриня зв\'яжеться з вами найближчим часом.';
+          messageElement.className = 'form-message success';
         }
-        orderForm.reset();
-        setTimeout(closeModal, 3500);
-
-      } catch (err) {
-        if (formMessage) {
-          formMessage.textContent = 'Сталася помилка. Спробуйте пізніше.';
-          formMessage.className = 'form-message error';
+        form.reset();
+        
+        // Закриваємо модальне вікно через 3 секунди після успішної відправки
+        if (!isContactForm) {
+          setTimeout(() => {
+            const modal = document.getElementById('order-modal');
+            if (modal) modal.classList.remove('active');
+            document.body.style.overflow = '';
+            if (messageElement) messageElement.textContent = ''; // Очищаємо повідомлення для наступного разу
+          }, 3000);
         }
-      } finally {
-        submitBtn.textContent = 'Відправити заявку';
-        submitBtn.disabled = false;
+      } else {
+        throw new Error('Telegram API error');
       }
+    } catch (err) {
+      console.error(err);
+      if (messageElement) {
+        messageElement.textContent = 'Сталася помилка при відправці. Будь ласка, зв\'яжіться напряму через месенджери.';
+        messageElement.className = 'form-message error';
+      }
+    } finally {
+      // Повертаємо кнопці початковий вигляд
+      submitBtn.textContent = originalBtnText;
+      submitBtn.disabled = false;
+    }
+  };
+
+  // Підключаємо обробник для головної форми (у модальному вікні)
+  const orderForm = document.getElementById('order-form');
+  const formMessage = document.getElementById('form-message');
+  if (orderForm) {
+    orderForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      sendToTelegram(orderForm, formMessage, false);
     });
+  }
+
+  // Підключаємо обробник для форми на сторінці контактів / доставки
+  const pageContactForm = document.getElementById('page-contact-form');
+  const pageFormMessage = document.getElementById('page-form-message');
+  if (pageContactForm) {
+    pageContactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      sendToTelegram(pageContactForm, pageFormMessage, true);
+    });
+  }
     // ================= Галерея на сторінці товару =================
   window.changeImage = function(element) {
     const mainImg = document.getElementById('main-product-img');
